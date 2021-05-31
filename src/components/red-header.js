@@ -1,5 +1,5 @@
 import '../sass/styles.scss';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'gatsby';
 import extendedLogo from '../files/icons/CA-white.svg';
 import menuIcon from '../files/icons/menu-icon.svg';
@@ -8,9 +8,15 @@ import PropTypes from 'prop-types';
 const RedHeader = ({ onMenuClick, mobileMenuHiddenBool }) => {
 
     const menuVisibility = mobileMenuHiddenBool ? 'mobile-menu-closed' : 'mobile-menu-open';
+    const [scroll, setScroll] = useState(false)
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            setScroll(window.scrollY > 20)
+        })
+    }, []);
     return (
 
-        <header className={`header red-header ${menuVisibility}`}>
+        <header className={`header red-header ${menuVisibility} ${scroll ? "main-header scrolled" : "main-header"} `}>
 
             <div className='red-header--header'><div className='inner'>
                 <Link to='/' className='logo'>

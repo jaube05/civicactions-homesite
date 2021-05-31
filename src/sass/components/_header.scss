@@ -1,7 +1,7 @@
 .header {
 
   // box-shadow: 0 5px 25px -10px rgba(0, 0, 0, 0.3); // TODO 1. Add this when we have an event telling us that the item is at the top of the page.
-  padding: 50px 0 20px;
+  padding: 20px 0 0;
   position: sticky;
   top: 0;
   background: $colors-white; // TODO 2. We only really want this once this is sticking, othewise it should be transparent.
@@ -18,7 +18,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1200px; // TODO 3.  This will be full width once sticky at top.
-    margin: 0 auto 30px auto;
+    margin: 0 auto;
   }
 
   .header-nav {

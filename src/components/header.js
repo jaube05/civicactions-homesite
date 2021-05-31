@@ -1,5 +1,5 @@
 import '../sass/styles.scss';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'gatsby';
 import extendedLogo from '../files/icons/ca-extended-logo.svg';
 import menuIcon from '../files/icons/menu-icon.svg';
@@ -8,8 +8,14 @@ import PropTypes from 'prop-types';
 const Header = ({ onMenuClick, mobileMenuHiddenBool }) => {
 
   const menuVisibility = mobileMenuHiddenBool ? 'mobile-menu-closed' : 'mobile-menu-open';
+  const [scroll, setScroll] = useState(false)
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 100)
+    })
+  }, []);
   return (
-    <header className={`header ${menuVisibility}`}>
+    <header className={scroll ? "main-header scrolled" : "main-header"}>
       <div className='inner'>
         <Link to='/' className='logo'>
           <img src={extendedLogo} alt='Civic Actions Logo'></img>
